@@ -7,7 +7,7 @@ class usedcar_spider(scrapy.Spider):
     #get all the start page for each specific year
     pages=[]
     for i in range(1997,2018):
-        pages.append('https://newyork.craigslist.org/search/cto?max_auto_year=%(year)d&min_auto_year=%(year)d&sort=date&s=0' %
+        pages.append('https://newyork.craigslist.org/search/ctd?max_auto_year=%(year)d&min_auto_year=%(year)d&sort=date&s=0' %
                  {'year':i})
     start_urls = pages
     #for each year, get all the pages of post, and build a loop to go through all the pages
@@ -27,7 +27,7 @@ class usedcar_spider(scrapy.Spider):
         pageurls=[]
         try:
             for i in range(page_nums//120):
-                pageurls.append('https://newyork.craigslist.org/search/cto?max_auto_year=%(year)s&min_auto_year=%(year)s&sort=date&s=%(num)d' %
+                pageurls.append('https://newyork.craigslist.org/search/ctd?max_auto_year=%(year)s&min_auto_year=%(year)s&sort=date&s=%(num)d' %
                     {'year':auto_year[0], 'num':i*120})
         except:
             pageurls=['']
